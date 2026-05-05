@@ -1,99 +1,293 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ikhode Technology | Links</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Syne:wght@600;700&display=swap" rel="stylesheet"/>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-.page{font-family:var(--font-sans);min-height:100vh;position:relative;overflow:hidden;padding:2.5rem 1rem 3rem;display:flex;flex-direction:column;align-items:center}
-.bg{position:absolute;inset:0;background:linear-gradient(to bottom,#fff 0%,#fff 70%,rgba(255,255,255,0) 100%),linear-gradient(to right,#0ed2da,#5f29c7);z-index:0}
-.bg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,#bbb 1px,transparent 1px);background-size:100px 10%;pointer-events:none;mask-image:linear-gradient(to bottom,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 30%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 80%)}
-.content{position:relative;z-index:1;width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center}
-.name{font-size:24px;font-weight:500;color:#111;text-align:center;margin-bottom:6px}
-.bio{font-size:13px;color:#444;text-align:center;line-height:1.6;max-width:320px;margin-bottom:1.75rem}
-.links{width:100%;display:flex;flex-direction:column;gap:10px}
-.link-item{display:flex;align-items:center;gap:12px;padding:0.7rem 1rem;border-radius:14px;border:0.5px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.72);text-decoration:none;transition:background 0.15s,border-color 0.15s;backdrop-filter:blur(6px)}
-.link-item:hover{background:rgba(255,255,255,0.95);border-color:rgba(0,0,0,0.2)}
-.icon{width:38px;height:38px;border-radius:10px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;border:0.5px solid rgba(0,0,0,0.08)}
-.icon img{width:100%;height:100%;object-fit:contain;padding:4px}
-.link-text{flex:1;min-width:0}
-.link-name{font-size:14px;font-weight:500;color:#111;display:block}
-.link-desc{font-size:12px;color:#666;display:block;margin-top:1px}
-.arr{font-size:13px;color:#aaa;flex-shrink:0}
-.footer{margin-top:2.5rem;font-size:12px;color:#aaa;text-align:center}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --accent-a: #0ed2da;
+    --accent-b: #5f29c7;
+    --card-bg: rgba(255,255,255,0.75);
+    --card-border: rgba(0,0,0,0.08);
+    --card-hover: rgba(255,255,255,0.97);
+    --text-primary: #111;
+    --text-secondary: #555;
+    --text-muted: #999;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Background */
+  .bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+      linear-gradient(to bottom, #fff 0%, #fff 55%, rgba(255,255,255,0) 100%),
+      linear-gradient(to right, #0ed2da, #5f29c7);
+  }
+  .bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(90deg, rgba(100,100,150,0.18) 1px, transparent 1px);
+    background-size: clamp(40px, 8vw, 80px) 100%;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 55%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 55%);
+  }
+
+  /* Page layout */
+  .page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 5vw, 1.5rem) clamp(2rem, 6vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: clamp(1.25rem, 4vw, 2rem);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.4rem, 5vw, 1.85rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .bio {
+    font-size: clamp(0.78rem, 3vw, 0.88rem);
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Links list */
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 2vw, 12px);
+  }
+
+  .link-item {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 3vw, 14px);
+    padding: clamp(0.6rem, 2.5vw, 0.8rem) clamp(0.75rem, 3vw, 1.1rem);
+    border-radius: 16px;
+    border: 0.5px solid var(--card-border);
+    background: var(--card-bg);
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.18s, border-color 0.18s, transform 0.14s;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .link-item:hover {
+    background: var(--card-hover);
+    border-color: rgba(0,0,0,0.18);
+    transform: translateY(-1px);
+  }
+
+  .link-item:active {
+    transform: translateY(0) scale(0.99);
+  }
+
+  /* Icon */
+  .icon {
+    width: clamp(36px, 10vw, 44px);
+    height: clamp(36px, 10vw, 44px);
+    border-radius: 11px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 0.5px solid rgba(0,0,0,0.07);
+  }
+
+  .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: clamp(3px, 1vw, 5px);
+    display: block;
+  }
+
+  /* Link text */
+  .link-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .link-name {
+    font-size: clamp(0.82rem, 3.2vw, 0.95rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .link-desc {
+    font-size: clamp(0.7rem, 2.5vw, 0.78rem);
+    color: var(--text-muted);
+    display: block;
+    margin-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .arr {
+    font-size: clamp(11px, 3vw, 14px);
+    color: #bbb;
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+    color: var(--text-muted);
+    text-align: center;
+    animation: fadeUp 0.5s 0.7s ease both;
+  }
+
+  /* Stagger animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .link-item:nth-child(1) { animation-delay: 0.05s; }
+  .link-item:nth-child(2) { animation-delay: 0.12s; }
+  .link-item:nth-child(3) { animation-delay: 0.19s; }
+  .link-item:nth-child(4) { animation-delay: 0.26s; }
+  .link-item:nth-child(5) { animation-delay: 0.33s; }
+  .link-item:nth-child(6) { animation-delay: 0.40s; }
+
+  @media (max-width: 400px) {
+    .link-desc { display: none; }
+    .icon { border-radius: 9px; }
+  }
 </style>
+</head>
+<body>
+
+<div class="bg"></div>
 
 <div class="page">
-  <div class="bg"></div>
-  <div class="content">
+  <div class="header">
     <div class="name">Ikhode Technology</div>
     <div class="bio">Founder, Researcher, Full Stack Developer, Freelancer, Aspiring Content Creator with my brother</div>
-
-    <div class="links">
-
-      <a class="link-item" href="https://link.payway.com.kh/ABAPAYEu439700a" target="_blank" rel="noopener">
-        <div class="icon">
-          <img style="border-radius: 10px;" src="https://assets.apidog.com/app/apidoc-image/custom/20250307/515f8de7-3e16-4aea-a59a-9ecbb6ab2502.svg" alt="ABA PayWay"/>
-        </div>
-        <div class="link-text">
-          <span class="link-name">Donate via ABA PayWay</span>
-          <span class="link-desc">Support or sponsor my work</span>
-        </div>
-        <span class="arr">↗</span>
-      </a>
-
-      <a class="link-item" href="https://t.me/soytet" target="_blank" rel="noopener">
-        <div class="icon">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"/>
-        </div>
-        <div class="link-text">
-          <span class="link-name">Telegram</span>
-          <span class="link-desc">Contact me on Telegram</span>
-        </div>
-        <span class="arr">↗</span>
-      </a>
-
-      <a class="link-item" href="https://github.com/MyKhode" target="_blank" rel="noopener">
-        <div class="icon">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/>
-        </div>
-        <div class="link-text">
-          <span class="link-name">GitHub</span>
-          <span class="link-desc">Open source projects & contributions</span>
-        </div>
-        <span class="arr">↗</span>
-      </a>
-
-      <a class="link-item" href="https://meatika.dev" target="_blank" rel="noopener">
-        <div class="icon">
-          <img src="https://meatika.dev/assets/images/logo.png" alt="Meatika Editor"/>
-        </div>
-        <div class="link-text">
-          <span class="link-name">Meatika Editor</span>
-          <span class="link-desc">Browser-based video editor</span>
-        </div>
-        <span class="arr">↗</span>
-      </a>
-
-      <a class="link-item" href="https://ikhode.com/" target="_blank" rel="noopener">
-        <div class="icon">
-          <img style="border-radius: 10px;" src="https://avatars.githubusercontent.com/u/132768132?v=4" alt="Ikhode Technology"/>
-        </div>
-        <div class="link-text">
-          <span class="link-name">Ikhode Technology</span>
-          <span class="link-desc">Official website</span>
-        </div>
-        <span class="arr">↗</span>
-      </a>
-
-      <a class="link-item" href="https://khqr.ikhode.com/" target="_blank" rel="noopener">
-        <div class="icon">
-          <img src="https://meatika.dev/sponsored/khmer-qr-bridge.png" alt="Khmer QR Bridge"/>
-        </div>
-        <div class="link-text">
-          <span class="link-name">Khmer QR Bridge</span>
-          <span class="link-desc">Get your payment API easier & faster</span>
-        </div>
-        <span class="arr">↗</span>
-      </a>
-
-    </div>
-    <div class="footer">© 2025 Ikhode Technology. All rights reserved.</div>
   </div>
+
+  <div class="links">
+
+    <a class="link-item" href="https://link.payway.com.kh/ABAPAYEu439700a" target="_blank" rel="noopener">
+      <div class="icon">
+        <img src="https://assets.apidog.com/app/apidoc-image/custom/20250307/515f8de7-3e16-4aea-a59a-9ecbb6ab2502.svg" alt="ABA PayWay"/>
+      </div>
+      <div class="link-text">
+        <span class="link-name">Donate via ABA PayWay</span>
+        <span class="link-desc">Support or sponsor my work</span>
+      </div>
+      <span class="arr">↗</span>
+    </a>
+
+    <a class="link-item" href="https://t.me/soytet" target="_blank" rel="noopener">
+      <div class="icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"/>
+      </div>
+      <div class="link-text">
+        <span class="link-name">Telegram</span>
+        <span class="link-desc">Contact me on Telegram</span>
+      </div>
+      <span class="arr">↗</span>
+    </a>
+
+    <a class="link-item" href="https://github.com/MyKhode" target="_blank" rel="noopener">
+      <div class="icon">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"/>
+      </div>
+      <div class="link-text">
+        <span class="link-name">GitHub</span>
+        <span class="link-desc">Open source projects & contributions</span>
+      </div>
+      <span class="arr">↗</span>
+    </a>
+
+    <a class="link-item" href="https://meatika.dev" target="_blank" rel="noopener">
+      <div class="icon">
+        <img src="https://meatika.dev/assets/images/logo.png" alt="Meatika Editor"/>
+      </div>
+      <div class="link-text">
+        <span class="link-name">Meatika Editor</span>
+        <span class="link-desc">Browser-based video editor</span>
+      </div>
+      <span class="arr">↗</span>
+    </a>
+
+    <a class="link-item" href="https://ikhode.com/" target="_blank" rel="noopener">
+      <div class="icon" style="padding:0">
+        <img style="border-radius:10px;padding:0" src="https://avatars.githubusercontent.com/u/132768132?v=4" alt="Ikhode Technology"/>
+      </div>
+      <div class="link-text">
+        <span class="link-name">Ikhode Technology</span>
+        <span class="link-desc">Official website</span>
+      </div>
+      <span class="arr">↗</span>
+    </a>
+
+    <a class="link-item" href="https://khqr.ikhode.com/" target="_blank" rel="noopener">
+      <div class="icon">
+        <img src="https://meatika.dev/sponsored/khmer-qr-bridge.png" alt="Khmer QR Bridge"/>
+      </div>
+      <div class="link-text">
+        <span class="link-name">Khmer QR Bridge</span>
+        <span class="link-desc">Get your payment API easier & faster</span>
+      </div>
+      <span class="arr">↗</span>
+    </a>
+
+  </div>
+
+  <div class="footer">© 2025 Ikhode Technology. All rights reserved.</div>
 </div>
+
+</body>
+</html>
